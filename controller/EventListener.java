@@ -13,4 +13,9 @@ public interface EventListener {
 
     void levelCompleted(int level);
 
+    void newGame();
+
+    void showMenu();
+
+
 }

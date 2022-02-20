@@ -18,7 +18,7 @@ public class Controller implements EventListener {
         view = new View(this);
         model = new Model();
         view.init();
-        model.restart();
+        view.showMenu();
         view.setEventListener(this);
         model.setEventListener(this);
     }
@@ -48,6 +48,17 @@ public class Controller implements EventListener {
     @Override
     public void levelCompleted(int level) {
         view.completed(level);
+    }
+
+    @Override
+    public void newGame() {
+        model.restartLevel(1);
+        view.showGame();
+    }
+
+    @Override
+    public void showMenu() {
+        view.showMenu();
     }
 
     public static void main(String[] args) {

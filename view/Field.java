@@ -45,11 +45,9 @@ public class Field extends JPanel {
                 case VK_RIGHT: eventListener.move(Direction.RIGHT); break;
                 case VK_UP: eventListener.move(Direction.UP); break;
                 case VK_DOWN: eventListener.move(Direction.DOWN); break;
+                case VK_ESCAPE: eventListener.showMenu(); break;
                 case VK_R: eventListener.restart();
             }
         }
     }
-
-
-
 }

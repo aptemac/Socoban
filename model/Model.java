@@ -10,7 +10,7 @@ public class Model {
     public static final int FIELD_CELL_SIZE = 20;
     private EventListener eventListener;
     private GameObjects gameObjects;
-    private int currentLevel = 1;
+    private int currentLevel = 0;
     private LevelLoader levelLoader;
 
     public Model(){
