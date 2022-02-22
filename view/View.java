@@ -51,6 +51,7 @@ public class View extends JFrame {
 
     public void update(){
         field.repaint();
+        field.requestFocus();
     }
 
     public void completed(int level){
@@ -61,6 +62,10 @@ public class View extends JFrame {
 
     public GameObjects getGameObjects(){
         return controller.getGameObjects();
+    }
+
+    public boolean canMakeUndo(){
+        return controller.canMakeUndo();
     }
 
     public void setEventListener(EventListener eventListener){

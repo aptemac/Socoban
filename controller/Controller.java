@@ -27,6 +27,10 @@ public class Controller implements EventListener {
         return model.getGameObjects();
     }
 
+    public boolean canMakeUndo(){
+        return model.canMakeUndo();
+    }
+
     @Override
     public void move(Direction direction) {
         model.move(direction);
@@ -57,8 +61,9 @@ public class Controller implements EventListener {
     }
 
     @Override
-    public void showMenu() {
-        view.showMenu();
+    public void undoMove() {
+        model.undoMove();
+        view.update();
     }
 
     public static void main(String[] args) {

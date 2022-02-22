@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -56,5 +57,27 @@ public class GameObjects {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    @Override
+    public GameObjects clone(){
+        Set<Wall> walls = new HashSet<>();
+        Set<Box> boxes = new HashSet<>();
+        Set<Home> homes = new HashSet<>();
+        Player player = new Player(this.player.getX(), this.player.getY());
+
+        this.walls.forEach(o->{
+            walls.add(new Wall(o.getX(), o.getY()));
+        });
+
+        this.boxes.forEach(o->{
+            boxes.add(new Box(o.getX(), o.getY()));
+        });
+
+        this.homes.forEach(o->{
+            homes.add(new Home(o.getX(), o.getY()));
+        });
+
+        return new GameObjects(walls, boxes, homes, player);
     }
 }

@@ -15,7 +15,5 @@ public interface EventListener {
 
     void newGame();
 
-    void showMenu();
-
-
+    void undoMove();
 }

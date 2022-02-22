@@ -4,6 +4,8 @@ import controller.EventListener;
 
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
+import java.util.HashSet;
+import java.util.Stack;
 
 public class Model {
 
@@ -12,6 +14,7 @@ public class Model {
     private GameObjects gameObjects;
     private int currentLevel = 0;
     private LevelLoader levelLoader;
+    private final Stack<GameObjects> userActions = new Stack<>();
 
     public Model(){
         try {
@@ -22,6 +25,8 @@ public class Model {
     }
 
     public void move(Direction direction){
+        GameObjects tempGameObjects = gameObjects.clone();
+
         if (checkWallCollision(gameObjects.getPlayer(), direction)){
             return;
         }
@@ -30,7 +35,7 @@ public class Model {
             return;
         }
 
-
+        userActions.push(tempGameObjects.clone());
         switch (direction){
             case UP: gameObjects.getPlayer().move(0, -FIELD_CELL_SIZE); break;
             case DOWN: gameObjects.getPlayer().move(0, FIELD_CELL_SIZE); break;
@@ -50,6 +55,8 @@ public class Model {
 
     public void restartLevel(int level){
        this.gameObjects =  levelLoader.getLevel(level);
+       if (userActions!=null)
+           userActions.clear();
     }
 
     public void restart(){
@@ -104,6 +111,17 @@ public class Model {
         }
         if (boxesOnHomes==gameObjects.getHomes().size())
             eventListener.levelCompleted(currentLevel);
+    }
+
+    public boolean canMakeUndo(){
+        return !userActions.empty();
+    }
+
+    public void undoMove(){
+        if (!userActions.empty()){
+            gameObjects = userActions.pop();
+
+        }
     }
 
 
