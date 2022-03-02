@@ -16,4 +16,6 @@ public interface EventListener {
     void newGame();
 
     void undoMove();
+
+    boolean saveGame(String saveName);
 }

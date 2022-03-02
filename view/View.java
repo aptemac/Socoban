@@ -41,6 +41,8 @@ public class View extends JFrame {
 
     public void showMenu(){
         cardLayout.show(jPanels, MENU);
+
+        controller.getSavesName();
     }
 
     public void showGame(){

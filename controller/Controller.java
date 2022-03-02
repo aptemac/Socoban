@@ -66,12 +66,23 @@ public class Controller implements EventListener {
         view.update();
     }
 
+    @Override
+    public boolean saveGame(String saveName) {
+        return model.saveGame(saveName);
+    }
+
+    public void getSavesName(){
+        model.getSaves();
+    }
+
     public static void main(String[] args) {
 
         Controller controller = new Controller();
 
 
         Path f = Paths.get(controller.getClass().getName().replace(".","\\")+"\\..\\..\\res\\levels.txt").normalize().toAbsolutePath();
-
+        controller.model.getSaves().forEach(System.out::println);
+        controller.model.removeSave("empty3");
+        controller.model.getSaves().forEach(System.out::println);
     }
 }

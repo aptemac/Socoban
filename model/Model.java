@@ -4,8 +4,7 @@ import controller.EventListener;
 
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.Stack;
+import java.util.*;
 
 public class Model {
 
@@ -15,9 +14,13 @@ public class Model {
     private int currentLevel = 0;
     private LevelLoader levelLoader;
     private final Stack<GameObjects> userActions = new Stack<>();
+    private SaveAndLoad saveAndLoad;
 
     public Model(){
+
+
         try {
+            saveAndLoad = new SaveAndLoad(Paths.get(getClass().getResource("../res/saves.txt").toURI()));
             levelLoader = new LevelLoader(Paths.get(getClass().getResource("../res/levels.txt").toURI()));
         } catch (URISyntaxException e) {
             e.printStackTrace();
@@ -123,6 +126,20 @@ public class Model {
 
         }
     }
+
+    public boolean saveGame(String saveName){
+        return saveAndLoad.saveGame(saveName);
+    }
+
+    public void removeSave(String saveName){
+        saveAndLoad.removeSave(saveName);
+    }
+
+    public ArrayList<String> getSaves(){
+        return saveAndLoad.getSavesName();
+    }
+
+
 
 
 }
