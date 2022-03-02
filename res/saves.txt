@@ -1,0 +1,35 @@
+Save name: empty1
+Level: 0
+Walls: 1;2
+Boxes: 3;4 0;0
+Homes: 5;6 0;0 0;0
+Player: 0;0
+**********
+Save name: empty2
+Level: 0
+Walls: 7;8 9;10 0;0
+Boxes: 1;2
+Homes: 11;0 0;0
+Player: 0;0
+**********
+Save name: empty3
+Level: 0
+Walls: 0;0
+Boxes: 2;2
+Homes: 0;0
+Player: 0;0
+**********
+Save name: empty4
+Level: 0
+Walls: 0;0
+Boxes: 3;4
+Homes: 0;0
+Player: 0;0
+**********
+Save name: empty5
+Level: 0
+Walls: 0;0
+Boxes: 5;6
+Homes: 0;0
+Player: 0;0
+**********
